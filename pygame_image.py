@@ -20,13 +20,25 @@ def main():
         for event in pg.event.get():
             if event.type == pg.QUIT: return
         key_lst = pg.key.get_pressed()#練習10-3
-        if key_lst[pg.K_UP]:#練習1
-            kk_rct.move_ip((0, -1))
-        if key_lst[pg.K_DOWN]:
-            kk_rct.move_ip((0,+1))
-        if key_lst[pg.K_RIGHT]:
-            kk_rct.move_ip((+2,0))
-        kk_rct.move_ip((-1,0)) #演習課題1
+
+        move_x = -1
+        move_y = 0
+
+        if key_lst[pg.K_UP]: #演習課題2
+            move_y -= 1
+        elif key_lst[pg.K_RIGHT]:
+            move_x += 2
+        elif key_lst[pg.K_DOWN]:
+            move_y += 1
+        
+
+        # if key_lst[pg.K_UP]:#練習1
+        #     kk_rct.move_ip((0, -1))
+        # if key_lst[pg.K_DOWN]:
+        #     kk_rct.move_ip((0,+1))
+        # if key_lst[pg.K_RIGHT]:
+        #     kk_rct.move_ip((+2,0))
+        kk_rct.move_ip((move_x,move_y)) #演習課題1と2
         print(key_lst)
         x = tmr%3200 #練習9
         screen.blit(bg_img, [-x, 0]) #練習5
